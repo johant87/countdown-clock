@@ -18,4 +18,16 @@ function countDownTime(deadline){
   };
 }
 
-console.log(countDownTime(deadline).minutes)
+function startCountdown(id, deadline){
+  var countdown = document.getElementById(id);
+  var timeinterval = setInterval(function(){
+    var t = countDownTime(deadline);
+    countdown.innerHTML = 'minutes: ' + t.minutes + '<br>' +
+                          'seconds: ' + t.seconds;
+    if(t.total<=0){
+      clearInterval(timeinterval);
+    }
+  },1000);
+}
+
+startCountdown('countdown', deadline);
